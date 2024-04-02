@@ -26,10 +26,6 @@ L_1 = 20;
 L_2 = 50;
 L_3 = 40;
 
-handles.L1.String = '20';
-handles.L2.String = '50';
-handles.L3.String = '40';
-
 L(1) = Link([0 L_1 0 pi/2]);
 L(2) = Link([0 0 L_2 0]);
 L(3) = Link([0 0 L_3 0]);
@@ -64,6 +60,7 @@ function Theta_3_Callback(hObject, eventdata, handles)
 function Pos_X_Callback(hObject, eventdata, handles)
 function Pos_Y_Callback(hObject, eventdata, handles)
 function Pos_Z_Callback(hObject, eventdata, handles)
+function txtStep_Callback(hObject, eventdata, handles)
 
 function varargout = Robot_3DOF_OutputFcn(hObject, eventdata, handles)
 varargout{1} = handles.output;
@@ -100,6 +97,8 @@ Th_3 = str2double(handles.Theta_3.String)*pi/180;
 handles.Robot.plot([Th_1 Th_2 Th_3]);
 
 T = handles.Robot.fkine([Th_1 Th_2 Th_3]);
+class(T)
+class(T.t)
 handles.CurrentT1 = Th_1;
 handles.CurrentT2 = Th_2;
 handles.CurrentT3 = Th_3;
@@ -182,7 +181,7 @@ for c = 1:Step:180
                 Points(t1,t2,2) = P.t(2,1);
                 Points(t1,t2,3) = P.t(3,1);
                 plot3(P.t(1,1),P.t(2,1),P.t(3,1),'r.');
-                %handles.Robot.plot([P.t(1,1) P.t(2,1) P.t(3,1)]*pi/180);
+                handles.Robot.plot([c t_1(t1) t_1(t2)]*pi/180);
                 % pause(PauseTime);
             end
             State = 1;
@@ -194,7 +193,7 @@ for c = 1:Step:180
                 Points(t1,t2,2) = P.t(2,1);
                 Points(t1,t2,3) = P.t(3,1);
                 plot3(P.t(1,1),P.t(2,1),P.t(3,1),'r.');
-                %handles.Robot.plot([P.t(1,1) P.t(2,1) P.t(3,1)]*pi/180);
+                handles.Robot.plot([c t_1(t1) t_1(t2)]*pi/180);
                 % pause(PauseTime);
             end
             State = 0;
