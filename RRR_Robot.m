@@ -179,26 +179,31 @@ for c = 1:Step:180
     for t1 = 1:1:length(t_1)
         if (State == 0)
             for t2 = 1:1:length(t_1)
-                %handles.Robot.plot([0 t1 t2]*pi/180);
-                P = handles.Robot.fkine([c t_1(t1) t_1(t2) t_1(t2)]*pi/180);
-                Points(t1,t2,1) = P.t(1,1);
-                Points(t1,t2,2) = P.t(2,1);
-                Points(t1,t2,3) = P.t(3,1);
-                plot3(P.t(1,1),P.t(2,1),P.t(3,1),'r.');
-                handles.Robot.plot([P.t(1,1) P.t(2,1) P.t(3,1)]*pi/180);
-                % pause(PauseTime);
+                for t3 = 1:1:length(t_1)
+                    %handles.Robot.plot([0 t1 t2]*pi/180);
+                    P = handles.Robot.fkine([c t_1(t1) t_1(t2) t_1(t3)]*pi/180);
+                    Points(t1,t2,1) = P.t(1,1);
+                    Points(t1,t2,2) = P.t(2,1);
+                    Points(t1,t2,3) = P.t(3,1);
+                    P
+                    plot3(P.t(1,1),P.t(2,1),P.t(3,1),'r.');
+                    handles.Robot.plot([P.t(1,1) P.t(2,1) P.t(3,1)]*pi/180);
+                    % pause(PauseTime);
+                end
             end
             State = 1;
         else
             for t2 = length(t_1):-1:1
-                %handles.Robot.plot([0 t1 t2]*pi/180);
-                P = handles.Robot.fkine([c t_1(t1) t_1(t2) t_1(t2)]*pi/180);
-                Points(t1,t2,1) = P.t(1,1);
-                Points(t1,t2,2) = P.t(2,1);
-                Points(t1,t2,3) = P.t(3,1);
-                plot3(P.t(1,1),P.t(2,1),P.t(3,1),'r.');
-                handles.Robot.plot([P.t(1,1) P.t(2,1) P.t(3,1)]*pi/180);
-                % pause(PauseTime);
+               for t3 = length(t_1):-1:1
+                    %handles.Robot.plot([0 t1 t2]*pi/180);
+                    P = handles.Robot.fkine([c t_1(t1) t_1(t2) t_1(t3)]*pi/180);
+                    Points(t1,t2,1) = P.t(1,1);
+                    Points(t1,t2,2) = P.t(2,1);
+                    Points(t1,t2,3) = P.t(3,1);
+                    plot3(P.t(1,1),P.t(2,1),P.t(3,1),'r.');
+                    handles.Robot.plot([P.t(1,1) P.t(2,1) P.t(3,1)]*pi/180);
+                    % pause(PauseTime);
+                end
             end
             State = 0;
         end

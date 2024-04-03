@@ -170,7 +170,7 @@ hold on;
 
 t_1 = Start:Step:End;
 Points = zeros(length(t_1), length(t_1) , 3);
-
+Points
 for c = 1:Step:180
     for t1 = 1:1:length(t_1)
         if (State == 0)
