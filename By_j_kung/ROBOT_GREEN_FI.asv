@@ -22,9 +22,9 @@ end
 % --- Executes just before Robot_3DOF is made visible.
 function ROBOT_GREEN_FI_OpeningFcn(hObject, eventdata, handles, varargin)
 handles.output = hObject;
-L_1 = 11;
-L_2 = 8.5;
-L_3 = 8.5;
+L_1 = 11.1;
+L_2 = 8.2;
+L_3 = 8.2;
 L_4 = 12;
 
 L(1) = Link([0 L_1 0 pi/2]);
@@ -33,12 +33,13 @@ L(3) = Link([0 0 L_3 0]);
 L(4) = Link([0 0 0 pi/2]);
 L(5) = Link([0 L_4 0 0]);
 
+L(3).offset = -pi/2;
+
 L(1).qlim = [0 pi];
 L(2).qlim = [0 pi];
 L(3).qlim = [0 pi];
 L(4).qlim = [pi/2 pi];
 L(5).qlim = [0 pi];
-L(3).offset = -pi/2;
 
 Robot = SerialLink(L);
 Robot.name = '   Robot_Green';
@@ -148,8 +149,8 @@ PX = str2double(handles.Pos_X.String);
 PY = str2double(handles.Pos_Y.String);
 PZ = str2double(handles.Pos_Z.String);
 T = transl(PX,PY,PZ);
-T
-J = handles.Robot.ikine(T,[handles.CurrentT1 handles.CurrentT2 handles.CurrentT3 handles.CurrentT4 handles.CurrentT5],'mask', [1 1 1 0 0 0]) * 180/pi;
+  
+J = handles.Robot.ikine(T) * 180/pi;
 J
 handles.Theta_1.String = num2str(floor(J(1)));
 handles.Theta_2.String = num2str(floor(J(2)));

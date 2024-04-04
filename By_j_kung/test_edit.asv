@@ -1,0 +1,19 @@
+L_1 = 5;
+L_2 = 8.5;
+L_3 = 8.5;
+L_4 = 10;
+
+%----DH_table-----
+L(1) = Link([0 L_1 0 pi/2].'standard');
+L(2) = Link([0 0 L_2 0]);
+L(3) = Link([0 0 0 0]);
+%L(4) = Link([0 0 0 pi/2]);
+%L(5) = Link([0 L_4 0 0]);
+
+Robot = SerialLink(L);
+Robot.name = 'Myrobotic';
+Robot
+
+space = 40
+Robot.plot([90 90 90]*pi/180,'workspace',[-space space -space space 0 space])
+%Robot.teach

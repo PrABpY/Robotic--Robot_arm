@@ -1,31 +1,21 @@
-L_1 = 5;
+L_1 = 11.3;
 L_2 = 8.5;
 L_3 = 8.5;
 L_4 = 10;
 
 %----DH_table-----
-L(1) = Link([0 L_1 0 pi/2]);
-L(2) = Link([0 0 L_2 0]);
-L(3) = Link([0 0 L_3 0]);
-L(4) = Link([0 0 0 pi/2]);
-L(5) = Link([0 L_4 0 0]);
-L(1).offset = -pi/2;
-L(2).offset = 0;
-L(3).offset = -pi/2;
-L(4).offset = 0;
+L(1) = Revolute('d', 0, 'a', 0, 'alpha', 0);
+L(2) = Revolute('d', L_1, 'a', 0, 'alpha', pi/2);
+L(3) = Revolute('d', 0, 'a', L_2, 'alpha', 0);
+L(4) = Revolute('d', 0, 'a', L_3, 'alpha', 0);
+L(4).offset = -pi/2;
+L(5) = Revolute('d', 0, 'a', 10, 'alpha', -pi/2);
+L(5).offset = -pi/2;
 
 Robot = SerialLink(L);
 Robot.name = 'Myrobotic';
 Robot
 
-qi = [pi/3 pi/4 pi/5 pi/6];
-qd = [2*pi/3 2*pi/4 2*pi/5 2*pi/6];
-
-%Ti = fkine(Robot,qi)
-%Td = fkine(Robot,qd)
-
-%Robot.plot(qi);
-
-space = 40
-Robot.plot([0 0 0 0 0],'workspace',[-space space -space space 0 space])
+space = 50;
+Robot.plot([90 90 90 90 90]*pi/180,'workspace',[-space space -space space 0 space])
 Robot.teach
