@@ -1,7 +1,7 @@
-L_1 = 5;
-L_2 = 8.5;
-L_3 = 8.5;
-L_4 = 10;
+L_1 = 11.1;
+L_2 = 8.2;
+L_3 = 8.2;
+L_4 = 12;
 
 %----DH_table-----
 L(1) = Link([0 L_1 0 pi/2]);
@@ -14,18 +14,19 @@ L(2).offset = 0;
 L(3).offset = -pi/2;
 L(4).offset = 0;
 
+L(1).qlim = [0 pi];
+L(2).qlim = [0 pi];
+L(3).qlim = [0 pi];
+L(4).qlim = [pi/2 pi];
+L(5).qlim = [0 pi];
+
 Robot = SerialLink(L);
 Robot.name = 'Myrobotic';
 Robot
 
-qi = [pi/3 pi/4 pi/5 pi/6];
-qd = [2*pi/3 2*pi/4 2*pi/5 2*pi/6];
-
-%Ti = fkine(Robot,qi)
-%Td = fkine(Robot,qd)
-
 %Robot.plot(qi);
 
-space = 40
-Robot.plot([0 0 0 0 0],'workspace',[-space space -space space 0 space])
+space = 30
+degree = 90
+Robot.plot([degree degree degree degree degree]*pi/180,'workspace',[-space space -space space -space space])
 Robot.teach
