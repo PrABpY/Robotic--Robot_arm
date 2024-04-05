@@ -223,3 +223,133 @@ function btn_Forward_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to btn_Forward (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
+
+
+% --- Executes on slider movement.
+function slider_theta1_Callback(hObject, eventdata, handles)
+Th_2 = str2double(handles.Theta_2.String)*pi/180;
+Th_3 = str2double(handles.Theta_3.String)*pi/180;
+Th_4 = str2double(handles.Theta_4.String)*pi/180;
+Th_5 = str2double(handles.Theta_5.String)*pi/180;
+Th_1_s = handles.slider_theta1.Value*pi/180;
+handles.Theta_1.String = num2str(floor(handles.slider_theta1.Value));
+
+T = handles.Robot.fkine([Th_1_s Th_2 Th_3 Th_4 Th_5]);
+handles.CurrentT1 = Th_1_s;
+handles.CurrentT2 = Th_2;
+handles.CurrentT3 = Th_3;
+handles.CurrentT4 = Th_4;
+handles.CurrentT5 = Th_5;
+
+handles.Pos_X.String = num2str(floor(T.t(1,1)));
+handles.Pos_Y.String = num2str(floor(T.t(2,1)));
+handles.Pos_Z.String = num2str(floor(T.t(3,1)));
+
+handles.Robot.plot([Th_1_s Th_2 Th_3 Th_4 Th_5]);
+
+% --- Executes during object creation, after setting all properties.
+function slider_theta1_CreateFcn(hObject, eventdata, handles)
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+
+
+% --- Executes on slider movement.
+function slider_theta2_Callback(hObject, eventdata, handles)
+Th_1 = str2double(handles.Theta_1.String)*pi/180;
+Th_3 = str2double(handles.Theta_3.String)*pi/180;
+Th_4 = str2double(handles.Theta_4.String)*pi/180;
+Th_5 = str2double(handles.Theta_5.String)*pi/180;
+Th_2_s = handles.slider_theta2.Value*pi/180;
+handles.Theta_2.String = num2str(floor(handles.slider_theta2.Value));
+
+T = handles.Robot.fkine([Th_1 Th_2_s Th_3 Th_4 Th_5]);
+handles.CurrentT1 = Th_1;
+handles.CurrentT2 = Th_2_s;
+handles.CurrentT3 = Th_3;
+handles.CurrentT4 = Th_4;
+handles.CurrentT5 = Th_5;
+
+handles.Pos_X.String = num2str(floor(T.t(1,1)));
+handles.Pos_Y.String = num2str(floor(T.t(2,1)));
+handles.Pos_Z.String = num2str(floor(T.t(3,1)));
+
+handles.Robot.plot([Th_1 Th_2_s Th_3 Th_4 Th_5]);
+
+
+% --- Executes during object creation, after setting all properties.
+function slider_theta2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider_theta2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+
+
+% --- Executes on slider movement.
+function slider_theta3_Callback(hObject, eventdata, handles)
+% hObject    handle to slider_theta3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+
+
+% --- Executes during object creation, after setting all properties.
+function slider_theta3_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider_theta3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+
+
+% --- Executes on slider movement.
+function slider_theta4_Callback(hObject, eventdata, handles)
+% hObject    handle to slider_theta4 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+
+
+% --- Executes during object creation, after setting all properties.
+function slider_theta4_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider_theta4 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+
+
+% --- Executes on slider movement.
+function slider_theta5_Callback(hObject, eventdata, handles)
+% hObject    handle to slider_theta5 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+
+
+% --- Executes during object creation, after setting all properties.
+function slider_theta5_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider_theta5 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end

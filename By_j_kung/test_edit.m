@@ -1,21 +1,25 @@
-L_1 = 11.3;
+L_1 = 11;
 L_2 = 8.5;
 L_3 = 8.5;
-L_4 = 10;
+L_4 = 12;
 
-%----DH_table-----
-L(1) = Revolute('d', 0, 'a', 0, 'alpha', 0);
-L(2) = Revolute('d', L_1, 'a', 0, 'alpha', pi/2);
-L(3) = Revolute('d', 0, 'a', L_2, 'alpha', 0);
-L(4) = Revolute('d', 0, 'a', L_3, 'alpha', 0);
-L(4).offset = -pi/2;
-L(5) = Revolute('d', 0, 'a', 10, 'alpha', -pi/2);
-L(5).offset = -pi/2;
+L(1) = Link([0 L_1 0 pi/2]);
+L(2) = Link([0 0 L_2 0]);
+L(3) = Link([0 0 L_3 0]);
+L(4) = Link([0 0 0 pi/2]);
+L(5) = Link([0 L_4 0 0]);
+
+L(1).qlim = [0 pi];
+L(2).qlim = [0 pi];
+L(3).qlim = [0 pi];
+L(4).qlim = [pi/2 pi];
+L(5).qlim = [0 pi];
+L(3).offset = -pi/2;
 
 Robot = SerialLink(L);
-Robot.name = 'Myrobotic';
+Robot.name = '   Robot_Green';
 Robot
 
 space = 50;
 Robot.plot([90 90 90 90 90]*pi/180,'workspace',[-space space -space space 0 space])
-Robot.teach
+%Robot.teach
