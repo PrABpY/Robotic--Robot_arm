@@ -27,6 +27,6 @@ Robot
 %Robot.plot(qi);
 
 space = 30
-degree = 90
+degree = 90 
 Robot.plot([degree degree degree degree degree]*pi/180,'workspace',[-space space -space space -space space])
 Robot.teach

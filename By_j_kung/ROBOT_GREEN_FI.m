@@ -113,6 +113,7 @@ Th_5 = str2double(handles.Theta_5.String)*pi/180;
 handles.Robot.plot([Th_1 Th_2 Th_3 Th_4 Th_5]);
 
 T = handles.Robot.fkine([Th_1 Th_2 Th_3 Th_4 Th_5]);
+T
 handles.CurrentT1 = Th_1;
 handles.CurrentT2 = Th_2;
 handles.CurrentT3 = Th_3;
