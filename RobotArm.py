@@ -1,12 +1,14 @@
 import numpy as np
 import math as mt
 
-theta1 = 90-90
-theta2 = 9 0
-theta3 = 90-90
+theta1 = 90
+theta2 = 100
+theta3 = 90
 theta4 = 90
 theta5 = 90
 
+theta1 = theta1-90
+theta3 = theta3-90
 
 def ForwardT05(theta1, theta2, theta3, theta4, theta5):
     T01 = np.array([[mt.cos(mt.radians(theta1)), -1 * mt.sin(mt.radians(theta1)), 0, 0],
@@ -85,7 +87,7 @@ def inv_theta3(p_x,p_y,p_z):
     s = w_z-11
     r = mt.sqrt((w_x**2)+(w_y**2))
     c3 = ((r**2)+(s**2)-(8.5**2)-(8.5**2)) / (2*8.5*8.5)
-    # print(r,c3**2)
+    print(r,((r**2)+(s**2)-(8.5**2)-(8.5**2)))
     s3 = mt.sqrt(1-c3**2)
     theta_3 = mt.atan(s3/c3)
 
@@ -100,4 +102,4 @@ theta_3 = mt.degrees(theta_3r)
 theta_2r = inv_theta2(px,py,pz,theta_3r)
 theta_2 = mt.degrees(theta_2r)
 
-print(theta_1,theta_2,theta_3)
+print(theta_1+90,theta_2,theta_3+90)
